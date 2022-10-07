@@ -12,10 +12,8 @@ export const handler = async (event, context) => {
 
   try {
     console.log("Launching Fargate task");
-    console.debug("Fargate Parameters: " + JSON.stringify(fargateParameters));
     const command = new RunTaskCommand(fargateParameters);
     const result = await client.send(command);
-    console.debug("logs: " + JSON.stringify(result));
   } catch (error) {
     console.log("Failed to launch fargate container. Error is: " + error);
     throw "Failed to launch " + error;
